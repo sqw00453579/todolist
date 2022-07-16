@@ -1,13 +1,104 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.red {
+    color: red;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.list {
+    padding: 10px;
+}
+
+.list li {
+    line-height: 40px;
+    margin: 0 0 0 30px;
+    padding: 0 20px;
+}
+
+.list li:hover {
+    background-color: #f4f4f4;
+}
+
+.title {
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+    background: #000;
+    color: #fff;
+}
+
+.title input {
+    height: 40px;
+}
+
+.container {
+    width: 800px;
+    height: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #D0D0D0;
+    border: #fff solid 1px;
+    border-radius: 5px;
+}
+
+.container h2 {
+    margin-left: 20px;
+}
+
+.btn {
+    float: right;
+    margin-top: 8px;
+}
+
+.line {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: #4b9cdb;
+}
+
+.loading-wrap {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    top: 200px;
+    left: 0;
+
+}
+
+.loading {
+    width: 100px;
+    height: 100px;
+    padding: 20px 20px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.loading .line {
+    margin: 0 5px;
+}
+
+.loading .line:nth-last-child(1) {
+    animation: loadingC 0.6s 0.1s linear infinite;
+}
+.loading .line:nth-last-child(2) {
+    animation: loadingC 0.6s 0.2s linear infinite;
+}
+.loading .line:nth-last-child(3) {
+    animation: loadingC 0.6s 0.3s linear infinite;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes loadingC {
+0 {
+    transform: translate(0, 0);
+}
+50% {
+    transform: translate(0, 15px);
+}
+100% {
+    transform: translate(0, 0);
+}
 }
