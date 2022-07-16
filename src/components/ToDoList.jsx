@@ -25,6 +25,13 @@ class ToDoList extends React.Component {
 
     async loadBlockchainData() {
         const web3 = new Web3(Web3.givenProvider)
+
+        try {
+            await Web3.givenProvider.enable();
+        } catch (error) {
+            // User denied account access...
+        }
+
         const accounts = await web3.eth.getAccounts()
         console.log('accounts', accounts)
         this.setState({account: accounts[0]})
