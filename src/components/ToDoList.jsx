@@ -4,7 +4,6 @@ import {CONTRACT_ABI, CONTRACT_ADDRESS} from '../config';
 
 //创建一个组件
 class ToDoList extends React.Component {
-
     //构造函数
     constructor(props) {
         super(props);
@@ -111,6 +110,7 @@ class ToDoList extends React.Component {
     render() {
         return (
             <div>
+                {/*<div>当前账号： {this.state.account}</div>*/}
                 <header>添加Todo: <input type="text" ref={this.inputToDo} onKeyUp={this.addToDo}/> 按回车确认添加</header>
                 <h2>待办事项</h2>
                 <hr/>
