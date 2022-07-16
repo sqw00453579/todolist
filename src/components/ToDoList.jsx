@@ -33,7 +33,6 @@ class ToDoList extends React.Component {
         }
 
         const accounts = await web3.eth.getAccounts()
-        console.log('accounts', accounts)
         this.setState({account: accounts[0]})
 
         this.setState({
@@ -48,7 +47,6 @@ class ToDoList extends React.Component {
                     _tasks.push(await this.state.todoListByContract.methods.tasks(i).call())
                 }
 
-                // console.log(_tasks)
                 this.setState({tasks: _tasks})
                 this.setState({loading: false})
             })
@@ -59,11 +57,12 @@ class ToDoList extends React.Component {
         if (event.keyCode === 13) {
             this.setState({loading: true})
             await this.state.todoListByContract.methods.createTask(this.inputToDo.current.value)
-                .send({from: this.state.account}).then(() => {
+                .send({from: this.state.account}).then((res) => {
                     let tempList = this.state.tasks;
 
                     tempList.push({
-                        content: this.inputToDo.current.value,
+                        id: res.events.TaskCreated.returnValues.id,
+                        content: res.events.TaskCreated.returnValues.content,
                         completed: false,
                         status: true
                     });
@@ -111,7 +110,7 @@ class ToDoList extends React.Component {
                     tasks: tempList,
                 });
                 this.setState({loading: false})
-        })
+            })
     }
 
     //render渲染虚拟DOM
@@ -160,7 +159,7 @@ class ToDoList extends React.Component {
                         })
                     }
                 </ul>
-                <div className={`${this.state.loading ? '':'hide'} loading-wrap`}>
+                <div className={`${this.state.loading ? '' : 'hide'} loading-wrap`}>
                     <div className="loading">
                         <div className="line"></div>
                         <div className="line"></div>
